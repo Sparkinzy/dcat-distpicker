@@ -16,6 +16,14 @@
    
  
 
+## 截图
+
+安装
+![install](https://tva1.sinaimg.cn/large/008i3skNgy1gq1qgdqsf8g30nc0bkdsp.gif)
+
+![code](https://tva1.sinaimg.cn/large/008i3skNgy1gq1qi98gpdj30860860t6.jpg)
+
+![image-usage](https://tva1.sinaimg.cn/large/008i3skNgy1gq1q6t3waxj30hx0a2aaf.jpg)
 
 
 
@@ -26,6 +34,8 @@
 ```composer require sparkinzy/dcat-distpicker```
 
 然后
+
+https://tva1.sinaimg.cn/large/008i3skNgy1gq1q6t3waxj30hx0a2aaf.jpg
 
 后台扩展管理先 **Upgrade to version 1.0.0**
 然后 **Enable**
