@@ -27,10 +27,8 @@
 
 然后
 
-```php artisan admin:import dcat-distpicker```
-
-
-
+后台扩展管理先 **Upgrade to version 1.0.0**
+然后 **Enable**
 
 
 ## 使用
