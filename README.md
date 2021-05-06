@@ -18,30 +18,23 @@
 
 ## 截图
 
-安装
-![install](https://tva1.sinaimg.cn/large/008i3skNgy1gq1qgdqsf8g30nc0bkdsp.gif)
-
-![code](https://tva1.sinaimg.cn/large/008i3skNgy1gq1qi98gpdj30860860t6.jpg)
-
-![image-usage](https://tva1.sinaimg.cn/large/008i3skNgy1gq1q6t3waxj30hx0a2aaf.jpg)
-
-
-
-## 安装
-
-首先
+1、安装
 
 ```composer require sparkinzy/dcat-distpicker```
 
-然后
+2、Dcat 后台发布资源
 
-https://tva1.sinaimg.cn/large/008i3skNgy1gq1q6t3waxj30hx0a2aaf.jpg
+![install](https://tva1.sinaimg.cn/large/008i3skNgy1gq1qgdqsf8g30nc0bkdsp.gif)
 
-后台扩展管理先 **Upgrade to version 1.0.0**
-然后 **Enable**
+3、dcat-distpicker 使用方式
 
+![code](https://tva1.sinaimg.cn/large/008i3skNgy1gq1qi98gpdj30860860t6.jpg)
 
-## 使用
+4、呈现效果
+
+![image-usage](https://tva1.sinaimg.cn/large/008i3skNgy1gq1q6t3waxj30hx0a2aaf.jpg)
+
+ 
 
 ### 表单中使用
 
