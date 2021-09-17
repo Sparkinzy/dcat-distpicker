@@ -53,9 +53,9 @@ $form->distpicker([
     'district_name' => '区'
 ], '地域选择')->default([
     'province' => '黑龙江省',
-    'city'     => 双鸭山市,
-    'district' => 四方台区,
-]);
+    'city'     => '双鸭山市',
+    'district' => '四方台区',
+])->select2();
 ```
 
 设置返回值类型
