@@ -44,7 +44,7 @@ class DistpickerFilter extends AbstractFilter
      * level 3 表示省市区
      * @var int
      */
-    protected $level = 1;
+    protected $level = 3;
     /**
      * @var array
      */
