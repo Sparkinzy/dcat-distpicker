@@ -30,6 +30,12 @@ class DistpickerFilter extends AbstractFilter
      * @var array
      */
     protected $value = [];
+    /**
+     * distpicker element id
+     * @var string
+     */
+    protected $distpickerId = '';
+    protected $selectIds    = [];
 
     /**
      * @var array
@@ -39,40 +45,27 @@ class DistpickerFilter extends AbstractFilter
 
     public function __construct($column, $arguments = [])
     {
-//        $this->column = implode('-', array_keys($column));
-        $this->column = 'distpicker-filter';
 
         if (!Arr::isAssoc($column)) {
-
-            $this->names = array_combine($this->columnKeys, $column);
+            $this->column = implode('-', $column);
+            $this->names  = array_combine($this->columnKeys, $column);
         } else {
+            $this->column      = implode('-', array_keys($column));
             $this->names       = array_combine($this->columnKeys, array_keys($column));
             $this->placeholder = array_combine($this->placeholder, $column);
         }
         $this->label = empty($arguments) ? "地区选择" : current($arguments);
 
-//        $this->setPresenter(new FilterPresenter());
     }
 
-    public function setParent(Filter $filter)
+    /**
+     * !!! most important
+     *
+     * @return false|string|string[]
+     */
+    public function getElementName()
     {
-        $this->parent = $filter;
-
-        $this->id = $this->formatId($this->column);
-    }
-
-
-    public function getColumn()
-    {
-        $columns = [];
-
-        $parentName = $this->parent->getName();
-
-        foreach ($this->column as $column) {
-            $columns[] = $parentName ? "{$parentName}_{$column}" : $column;
-        }
-
-        return $columns;
+        return explode('-', $this->column);
     }
 
 
@@ -108,7 +101,6 @@ class DistpickerFilter extends AbstractFilter
         foreach ($column as $col => $name) {
             $columns[$col] = parent::formatName($name);
         }
-
         return $columns;
     }
 
@@ -117,31 +109,9 @@ class DistpickerFilter extends AbstractFilter
      */
     protected function setupScript()
     {
-        $province = Arr::get($this->value, $this->names['province']);
-        $city     = Arr::get($this->value, $this->names['city']);
-        $district = Arr::get($this->value, $this->names['district']);
-
-        if (request()->pjax()){
             $script = <<<JS
-    $("#{$this->id}").distpicker({
-      province: '$province',
-      city: '$city',
-      district: '$district'
-    });
+    $("#{$this->distpickerId}").distpicker();
 JS;
-        }else{
-            // 兼容页面直接刷新
-            $script = <<<JS
-Dcat.ready(function(){
-        $("#{$this->id}").distpicker({
-      province: '$province',
-      city: '$city',
-      district: '$district'
-    });
-});
-JS;
-        }
-
         Admin::script($script);
     }
 
@@ -150,17 +120,20 @@ JS;
      */
     public function variables()
     {
-        $this->id = uniqid('distpicker-filter-');
-
+        $this->selectIds    = $this->formatId($this->names);
+        $this->distpickerId = uniqid('distpicker-filter-');
         $this->setupScript();
 
         return array_merge([
-            'id'        => $this->id,
-            'name'      => $this->formatName($this->names),
-            'label'     => $this->label,
-            'value'     => $this->value ?: $this->defaultValue,
-            'presenter' => $this->presenter(),
-            'width'     => $this->width,
+            'id'           => $this->id,
+            'column'       => $this->column,
+            'selectIds'    => $this->selectIds,
+            'distpickerId' => $this->distpickerId,
+            'name'         => $this->formatName($this->names),
+            'label'        => $this->label,
+            'value'        => $this->value ?: $this->defaultValue,
+            'presenter'    => $this->presenter(),
+            'width'        => $this->width,
         ], $this->presenter()->variables());
     }
 
@@ -168,4 +141,5 @@ JS;
     {
         return view('sparkinzy.dcat-distpicker::select-filter', $this->variables());
     }
+
 }

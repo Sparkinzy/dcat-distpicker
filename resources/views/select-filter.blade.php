@@ -1,23 +1,36 @@
 <style type="text/css">
-    .input-group .select2-container{
-        width: auto!important;
+    .input-group .select2-container {
+        width: auto !important;
     }
 </style>
-<div class="filter-input col-sm-{{ $width }}"  >
-    <div class="form-group" data-toggle="distpicker">
-        <div class="input-group input-group-sm" id="{{ $id }}" >
-            <div  class="input-group-prepend" >
+<div class="filter-input col-sm-{{ $width }}">
+    <div class="form-group">
+        <div data-toggle="distpicker" class="input-group input-group-sm" id="{{ $distpickerId }}">
+            <div class="input-group-prepend">
                 <span class="input-group-text bg-white text-capitalize "><b>{!! $label !!}</b></span>
             </div>
-            <select data-toggle="select2" class="form-control" name="{{$name['province']}}" ></select>
-            <select data-toggle="select2" class="form-control" name="{{$name['city']}}" ></select>
-            <select data-toggle="select2" class="form-control" name="{{$name['district']}}"></select>
+            <select data-toggle="select2"
+                    class="form-control {{$selectIds['province']}}"
+                    name="{{$name['province']}}"
+                    data-province="{{ $value[$name['province']]??'' }}"
+            ></select>
+
+            <select data-toggle="select2"
+                    class="form-control {{$selectIds['city']}}"
+                    name="{{$name['city']}}"
+                    data-city="{{ $value[$name['city']]??'' }}"
+            ></select>
+            <select data-toggle="select2"
+                    class="form-control {{$selectIds['district']}}"
+                    name="{{$name['district']}}"
+                    data-district="{{ $value[$name['district']]??'' }}"
+            ></select>
         </div>
     </div>
 </div>
 
 <script>
-    Dcat.ready(function(){
+    Dcat.ready(function () {
         $('[data-toggle=select2]').select2();
     });
 </script>

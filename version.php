@@ -12,5 +12,8 @@ return [
     ],
     '1.0.3' => [
         '修复Grid filter'
+    ],
+    '1.0.4' => [
+        '修复Grid filter的一些问题'
     ]
 ];

@@ -103,7 +103,9 @@ $form->distpicker(['province_name', 'city_name', 'district_name']))->select2();
 ### 表格筛选中使用
 
 ```
-$filter->distpicker('province_name', 'city_name', 'district_name', '地域选择');
+# province_name 为字段名
+$filter->distpicker(['province_name', 'city_name', 'district_name'], '地域选择');
+
 ```
 
 ## 地区编码数据
@@ -113,4 +115,4 @@ $filter->distpicker('province_name', 'city_name', 'district_name', '地域选择
 ## Todo 
 
 - [x] 可以自定义是否返回code或者name 
-- [ ] Grid filter扩展
+- [x] Grid filter扩展
