@@ -35,8 +35,16 @@ class DistpickerFilter extends AbstractFilter
      * @var string
      */
     protected $distpickerId = '';
+
     protected $selectIds    = [];
 
+    /**
+     * level 1 表示省
+     * level 2 表示省市
+     * level 3 表示省市区
+     * @var int
+     */
+    protected $level = 1;
     /**
      * @var array
      */
@@ -109,10 +117,20 @@ class DistpickerFilter extends AbstractFilter
      */
     protected function setupScript()
     {
-            $script = <<<JS
+        $script = <<<JS
     $("#{$this->distpickerId}").distpicker();
 JS;
         Admin::script($script);
+    }
+
+    /**
+     * 展示的级别
+     * @param int $level
+     */
+    public function level(int $level = 1)
+    {
+        $this->level = ($level>3 || $level<1) ? 1 :$level;
+        return $this;
     }
 
     /**
@@ -124,9 +142,11 @@ JS;
         $this->distpickerId = uniqid('distpicker-filter-');
         $this->setupScript();
 
+
         return array_merge([
             'id'           => $this->id,
             'column'       => $this->column,
+            'level'        => $this->level,
             'selectIds'    => $this->selectIds,
             'distpickerId' => $this->distpickerId,
             'name'         => $this->formatName($this->names),

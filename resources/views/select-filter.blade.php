@@ -14,17 +14,20 @@
                     name="{{$name['province']}}"
                     data-province="{{ $value[$name['province']]??'' }}"
             ></select>
-
+            @if($level > 1)
             <select data-toggle="select2"
                     class="form-control {{$selectIds['city']}}"
                     name="{{$name['city']}}"
                     data-city="{{ $value[$name['city']]??'' }}"
             ></select>
+            @endif
+            @if($level > 2)
             <select data-toggle="select2"
                     class="form-control {{$selectIds['district']}}"
                     name="{{$name['district']}}"
                     data-district="{{ $value[$name['district']]??'' }}"
             ></select>
+            @endif
         </div>
     </div>
 </div>

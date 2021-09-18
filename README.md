@@ -90,23 +90,38 @@ $form->distpicker(['province_name', 'city_name', 'district_name'], '请选择区
 
 设置自动选择, 可以设置1,2,3 表示自动选择到第几级
 
-```
+```php
 $form->distpicker(['province_name', 'city_name', 'district_name'])->autoselect(1);
 ```
 
 启用select2进行渲染
 
-```
+```php
 $form->distpicker(['province_name', 'city_name', 'district_name']))->select2();
 ```
 
 ### 表格筛选中使用
 
-```
+默认展开 省 市 区
+
+```php
 # province_name 为字段名
 $filter->distpicker(['province_name', 'city_name', 'district_name'], '地域选择');
 
 ```
+只展示 省
+```php
+
+$filter->distpicker(['province_name', 'city_name', 'district_name'], '地域选择')
+->level();
+
+```
+展示 省 市
+```php
+$filter->distpicker(['province_name', 'city_name', 'district_name'], '地域选择')
+->level(2);
+```
+
 
 ## 地区编码数据
 
