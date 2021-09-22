@@ -14,28 +14,36 @@
 
         <div id="{{ $id }}" {!! $attributes !!} class="row">
             <select
-                @if($enable_select2)
-                data-toggle="select2"
-                @endif
-            class="form-control col-md-3" name="{{$name['province']}}"
+                    @if($enable_select2)
+                    data-toggle="select2"
+                    @endif
+                    class="form-control col-md-3"
+                    name="{{$name['province']}}"
+                    data-province="{{ $value['province']??'' }}"
             ></select>&nbsp;
             <select
-                @if($enable_select2)
-                data-toggle="select2"
-                @endif
-                class="form-control col-md-3" name="{{$name['city']}}"></select>&nbsp;
+                    @if($enable_select2)
+                    data-toggle="select2"
+                    @endif
+                    class="form-control col-md-3"
+                    name="{{$name['city']}}"
+                    data-city="{{ $value['city']??'' }}"
+            ></select>&nbsp;
             <select
-                @if($enable_select2)
-                data-toggle="select2"
-                @endif
-                class="form-control col-md-3" name="{{$name['district']}}"></select>&nbsp;
+                    @if($enable_select2)
+                    data-toggle="select2"
+                    @endif
+                    class="form-control col-md-3"
+                    name="{{$name['district']}}"
+                    data-district="{{ $value['district']??'' }}"
+            ></select>&nbsp;
         </div>
         @include('admin::form.help-block')
 
     </div>
 </div>
 <script require="@sparkinzy.dcat-distpicker{{ $enable_select2?',@select2':''  }}" init="#{!! $id !!}">
-@if($enable_select2)
-     $('[data-toggle=select2]').select2();
-@endif
+    @if($enable_select2)
+    $('[data-toggle=select2]').select2();
+    @endif
 </script>

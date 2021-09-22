@@ -50,8 +50,12 @@ class DistpickerFilter extends AbstractFilter
      */
     protected $defaultValue = [];
 
-
-    public function __construct($column, $arguments = [])
+    /**
+     * DistpickerFilter constructor.
+     * @param array $column
+     * @param string $arguments
+     */
+    public function __construct(array $column=[], string $arguments = '')
     {
 
         if (!Arr::isAssoc($column)) {
@@ -62,7 +66,7 @@ class DistpickerFilter extends AbstractFilter
             $this->names       = array_combine($this->columnKeys, array_keys($column));
             $this->placeholder = array_combine($this->placeholder, $column);
         }
-        $this->label = empty($arguments) ? "地区选择" : current($arguments);
+        $this->label = empty($arguments) ? "地区选择" : $arguments;
 
     }
 

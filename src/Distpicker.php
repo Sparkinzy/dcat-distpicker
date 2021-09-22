@@ -2,6 +2,7 @@
 
 namespace Sparkinzy\Dcat\Distpicker;
 
+use Dcat\Admin\Admin;
 use Dcat\Admin\Form\Field;
 use Illuminate\Support\Arr;
 
@@ -132,14 +133,29 @@ class Distpicker extends Field
         return $this->attribute('data-value-type',$valueType);
     }
 
+    /**
+     * Setup js scripts.
+     */
+    protected function setupScript()
+    {
+        $script = <<<JS
+    $("#{$this->id}").distpicker();
+JS;
+        Admin::script($script);
+    }
+
     public function render()
     {
         if (!array_key_exists('enable_select2', $this->variables())){
             $this->addVariables(['enable_select2'=>false]);
         }
         $this->attribute('data-toggle','distpicker');
-        $id = uniqid('distpicker-');
+        $this->id = $id = uniqid('distpicker-');
+
         $this->addVariables(compact('id'));
+
+        $this->setupScript();
+
         return parent::render();
     }
 
