@@ -12,7 +12,7 @@
             @endif
         @endforeach
 
-        <div id="{{ $id }}" {!! $attributes !!} class="row">
+        <div id="{{ $id }}" {!! $attributes !!} class="row-fluid">
             <select
                     @if($enable_select2)
                     data-toggle="select2"
