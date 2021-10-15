@@ -10,7 +10,7 @@ use Dcat\Admin\Grid\Filter;
 class DcatDistpickerServiceProvider extends ServiceProvider
 {
     protected $js = [
-        'js/distpicker.js?v2.0.9',
+        'js/distpicker.js?v2.0.11',
     ];
 
     public function init()
