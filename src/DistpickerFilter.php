@@ -5,6 +5,7 @@ namespace Sparkinzy\Dcat\Distpicker;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Grid\Filter\AbstractFilter;
+use Dcat\Admin\Traits\HasHtmlAttributes;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Dcat\Admin\Grid\Filter;
@@ -30,6 +31,8 @@ class DistpickerFilter extends AbstractFilter
      * @var array
      */
     protected $value = [];
+
+    public $attributes = [];
     /**
      * distpicker element id
      * @var string
@@ -136,6 +139,29 @@ JS;
         $this->level = ($level>3 || $level<1) ? 1 :$level;
         return $this;
     }
+    /**
+     * 设置返回值是name,还是code
+     * @param string $valueType
+     * @return $this
+     */
+    public function type($valueType='name')
+    {
+
+        if (!in_array($valueType, ['name','code']))return $this;
+        $this->attribute('data_value_type',$valueType);
+        return  $this;
+    }
+
+    protected function attribute($name,$value)
+    {
+        $this->attributes[$name]=$value;
+        return $this;
+    }
+
+    protected function attributes()
+    {
+        return $this->attributes;
+    }
 
     /**
      * {@inheritdoc}
@@ -158,7 +184,7 @@ JS;
             'value'        => $this->value ?: $this->defaultValue,
             'presenter'    => $this->presenter(),
             'width'        => $this->width,
-        ], $this->presenter()->variables());
+        ], $this->presenter()->variables(),$this->attributes());
     }
 
     public function render()

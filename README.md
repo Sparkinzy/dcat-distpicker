@@ -122,12 +122,20 @@ $filter->distpicker(['province_name', 'city_name', 'district_name'], '地域选�
 ->level(2);
 ```
 
+使用code筛选
+```php
+$filter->distpicker(['province_name', 'city_name', 'district_name'], '地域选择')->type('code');
+# 只进行省市筛选
+$filter->distpicker(['province_name', 'city_name', 'district_name'], '地域选择')->level(2)->type('code');
+```
+
 
 ## 地区编码数据
 
-[Distpicker](https://github.com/fengyuanchen/distpicker)所使用的地域编码是基于国家统计局发布的数据, 数据字典为`china_area.sql`文件.
+[Distpicker](https://github.com/fengyuanchen/distpicker)所使用的地域编码是基于国家统计局发布的数据, 数据字典为`china_areas.sql`文件.
 
 ## Todo 
 
 - [x] 可以自定义是否返回code或者name 
 - [x] Grid filter扩展
+- [x] 数据库文件
