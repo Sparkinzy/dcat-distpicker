@@ -184,6 +184,7 @@ JS;
             'value'        => $this->value ?: $this->defaultValue,
             'presenter'    => $this->presenter(),
             'width'        => $this->width,
+            'data_value_type'=> 'name',
         ], $this->presenter()->variables(),$this->attributes());
     }
 

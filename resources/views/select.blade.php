@@ -1,6 +1,6 @@
 <div class="{{$viewClass['form-group']}} {!! !$errors->hasAny($errorKey) ? '' : 'has-error' !!}">
 
-    <label for="{{$id}}" class="{{$viewClass['label']}} control-label">{{$label}}</label>
+    <label for="{{ $id }}" class="{{$viewClass['label']}} control-label">{{$label}}</label>
 
     <div class="{{$viewClass['field']}} ">
 
@@ -12,31 +12,40 @@
             @endif
         @endforeach
 
-        <div id="{{ $id }}" {!! $attributes !!} class="row-fluid">
-            <select
-                    @if($enable_select2)
-                    data-toggle="select2"
-                    @endif
-                    class="form-control col-md-3"
-                    name="{{$name['province']}}"
-                    data-province="{{ $value['province']??'' }}"
-            ></select>&nbsp;
-            <select
-                    @if($enable_select2)
-                    data-toggle="select2"
-                    @endif
-                    class="form-control col-md-3"
-                    name="{{$name['city']}}"
-                    data-city="{{ $value['city']??'' }}"
-            ></select>&nbsp;
-            <select
-                    @if($enable_select2)
-                    data-toggle="select2"
-                    @endif
-                    class="form-control col-md-3"
-                    name="{{$name['district']}}"
-                    data-district="{{ $value['district']??'' }}"
-            ></select>&nbsp;
+        <div id="{{ $id }}" {!! $attributes !!} class="row">
+            <div class="col-md-4">
+                <select
+                        @if($enable_select2)
+                            data-toggle="select2"
+                        @endif
+                        class="form-control"
+                        name="{{$name['province']}}"
+                        data-province="{{ $value['province']??'' }}"
+                ></select>&nbsp;
+            </div>
+            <div class="col-md-4">
+                <select
+                        @if($enable_select2)
+                            data-toggle="select2"
+                        @endif
+                        class="form-control"
+                        name="{{$name['city']}}"
+                        data-city="{{ $value['city']??'' }}"
+                ></select>&nbsp;
+            </div>
+            <div class="col-md-4">
+                <select
+                        @if($enable_select2)
+                            data-toggle="select2"
+                        @endif
+                        class="form-control"
+                        name="{{$name['district']}}"
+                        data-district="{{ $value['district']??'' }}"
+                ></select>&nbsp;
+            </div>
+
+
+
         </div>
         @include('admin::form.help-block')
 
@@ -44,6 +53,6 @@
 </div>
 <script require="@sparkinzy.dcat-distpicker{{ $enable_select2?',@select2':''  }}" init="#{!! $id !!}">
     @if($enable_select2)
-    $('[data-toggle=select2]').select2();
+    $('.dcat-distpicker-select').select2();
     @endif
 </script>
