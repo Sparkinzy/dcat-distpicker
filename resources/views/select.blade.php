@@ -1,16 +1,9 @@
-<div class="{{$viewClass['form-group']}} {!! !$errors->hasAny($errorKey) ? '' : 'has-error' !!}">
+<div class="{{$viewClass['form-group']}} ">
 
     <label for="{{ $id }}" class="{{$viewClass['label']}} control-label">{{$label}}</label>
 
     <div class="{{$viewClass['field']}} ">
 
-        @foreach($errorKey as $key => $col)
-            @if($errors->has($col))
-                @foreach($errors->get($col) as $message)
-                    <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{$message}}</label><br/>
-                @endforeach
-            @endif
-        @endforeach
 
         <div id="{{ $id }}" {!! $attributes !!} class="row">
             <div class="col-md-4">
