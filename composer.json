@@ -3,7 +3,7 @@
     "alias": "distpicker",
     "description": "省市区地址选择器，支持select2",
     "type": "library",
-    "version": "1.1.0",
+    "version": "1.1.2",
     "keywords": ["dcat-admin", "extension","distpicker"],
     "homepage": "https://github.com/sparkinzy/dcat-distpicker",
     "license": "MIT",
